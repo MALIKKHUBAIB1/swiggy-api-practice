@@ -1,0 +1,68 @@
+/* Enhanced Shimmer effect CSS */
+.shimmer-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+
+.shimmer-card {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background-color: #666464;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.shimmer-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.shimmer-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #f6f7f8;
+  background-image: linear-gradient(90deg, #f6f7f8 25%, #edeef1 50%, #f6f7f8 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.shimmer-title {
+  width: 60%;
+  height: 20px;
+  border-radius: 4px;
+  background: #f6f7f8;
+  background-image: linear-gradient(90deg, #f6f7f8 25%, #edeef1 50%, #f6f7f8 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.shimmer-line {
+  width: 100%;
+  height: 15px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background: #f6f7f8;
+  background-image: linear-gradient(90deg, #f6f7f8 25%, #edeef1 50%, #f6f7f8 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.shimmer-line.short {
+  width: 40%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
