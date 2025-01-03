@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-
 const useFetchData = (id) => {
   const [menuData, setMenuData] = useState([]);
   const [orignalData, setOrignalData] = useState([]);
   const [error, setError] = useState("");
-
   async function fetchData(id) {
     const res = await fetch(
       `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&&submitAction=ENTER&restaurantId=` +
@@ -16,7 +14,6 @@ const useFetchData = (id) => {
   useEffect(() => {
     fetchData(id);
   }, [id]);
-
   return { menuData, orignalData, error, setMenuData, setOrignalData };
 };
 export default useFetchData;
@@ -46,14 +43,12 @@ const useFetchMenu = (url) => {
       setError(error.message);
     }
   }
-
   useEffect(() => {
     fetchData(url);
   }, [url]);
 
   return { resData, orignalData, error, setResData, setOrignalData, setError };
 };
-
 function useFetchRecomendedData() {
   const [data, setData] = useState([]);
   const fetchData = async () => {

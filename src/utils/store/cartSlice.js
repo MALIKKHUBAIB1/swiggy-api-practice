@@ -5,39 +5,39 @@ const cartSlice = createSlice({
   initialState: {
     items: [],
   },
+
   reducers: {
     addItem: (state, action) => {
-      //mutating out state this is allowed in redux it will manage underthehood
       const exitItemIndex = state.items.findIndex(
-        (item) => item.title === action.payload.title
+        (item) => item.id === action.payload.id // Assuming you're using the item id as the unique identifier
       );
-
       if (exitItemIndex >= 0) {
+        // Item already exists, update the quantity
         state.items[exitItemIndex].quantity += 1;
       } else {
+        // Item doesn't exist, add a new item
         const updatedItem = {
           ...action.payload,
           quantity: 1,
+          itemCards: action.payload.itemCards || [], // Ensure itemCards is defined
         };
         state.items.push(updatedItem);
       }
     },
+
     removeItem: (state, action) => {
-      state.items = state.items.map((item) => {
-        return {
-          ...item,
-          itemCards: item.itemCards.filter(
-            (itemCard) => itemCard.card.info.id !== action.payload
-          ),
-        };
-      });
-      state.items = state.items.filter((item) => item.itemCards.length > 0);
+      // Remove item from state.items based on item id
+      state.items = state.items.filter((item) => item.id !== action.payload);
+
+      // Optionally, you could also remove items if itemCards is empty, depending on your requirement:
+      // state.items = state.items.filter((item) => item.itemCards.length > 0);
     },
+
     clearCart: (state) => {
-      state.items.length = 0;
-      //return {items: []} this is also fine
+      state.items = []; // Clear all items in the cart
     },
   },
 });
+
 export const { addItem, removeItem, clearCart } = cartSlice.actions;
 export default cartSlice.reducer;
