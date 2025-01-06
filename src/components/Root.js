@@ -7,8 +7,9 @@ import appStore from "../utils/store/appStore";
 function Root() {
   return (
     <Provider store={appStore}>
-      <main>
+      <main className="relative">
         <AppLayout />
+        {/* <Header /> */}
       </main>
       <Outlet />
     </Provider>

@@ -156,3 +156,9 @@ a {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}

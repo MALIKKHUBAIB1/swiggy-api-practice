@@ -1,14 +1,13 @@
 import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
-import AppLayout from "./src/App";
 import About from "./src/components/About";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./src/components/Error";
 import Root from "./src/components/Root";
 import Body from "./src/components/Body";
 import DetailPage from "./src/components/ItemDetailPage";
-import CartProvider from "./src/components/cart.js";
 import Cart from "./src/components/cart.js";
+import UserClass from "./src/components/classcomponent.js";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const Contact = lazy(() => import("./src/components/contact.js"));
 const router = createBrowserRouter([
@@ -32,6 +31,12 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/class",
+        element: (
+          <UserClass name={"akshay saini"} location={"dehradun and manali"} />
+        ),
       },
       {
         path: "/contact",

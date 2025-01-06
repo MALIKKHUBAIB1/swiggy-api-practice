@@ -20,7 +20,7 @@ import useOnlineStatus from "./utils/useOnlineStatus";
 const AppLayout = () => {
   const isOnline = useOnlineStatus();
   return (
-    <div className="App">
+    <div className="App pt-28">
       <Header />
     </div>
   );

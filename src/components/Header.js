@@ -2,25 +2,22 @@ import { useState } from "react";
 import { LOGO_URL } from "../utils/constant";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
+
 const Header = () => {
   const [mode, setMode] = useState("Login");
   const items = useSelector((state) => state.cart.items, shallowEqual);
-  const quantity = items.reduce((acc, it) => {
-    return acc + it.quantity;
-  }, 0);
+  const quantity = items.reduce((acc, it) => acc + it.quantity, 0);
   const locations = useLocation();
+
   function LoginHandler() {
-    if (mode === "Login") {
-      setMode("Logout");
-    } else {
-      setMode("Login");
-    }
+    setMode((prevMode) => (prevMode === "Login" ? "Logout" : "Login"));
   }
+
   return (
-    <header className="bg-slate-300 text-black flex justify-between">
+    <header className="bg-slate-300 text-black flex justify-between fixed top-0 z-50 shadow-md w-full h-24">
       <img className="logo" src={LOGO_URL} alt="Company Logo" />
-      <nav className="">
-        <ul className="flex my-7">
+      <nav>
+        <ul className="flex my-7 space-x-4">
           <NavLink
             to="/"
             className={({ isActive }) => (isActive ? "active" : "")}
@@ -45,7 +42,7 @@ const Header = () => {
           >
             <li className="nav-item">About Us</li>
           </NavLink>
-          <li className="nav-item" onClick={LoginHandler}>
+          <li className="nav-item cursor-pointer" onClick={LoginHandler}>
             {mode}
           </li>
         </ul>
@@ -53,4 +50,5 @@ const Header = () => {
     </header>
   );
 };
+
 export default Header;

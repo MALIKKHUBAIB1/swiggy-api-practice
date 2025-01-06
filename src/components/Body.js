@@ -8,11 +8,10 @@ const Body = () => {
   const { resData, orignalData, error, setOrignalData } = useFetchMenu(
     "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1702401&lng=72.83106070000001&page_type="
   );
-
   const [searchText, setSearchText] = useState("");
 
   const filterResutrent = () => {
-    const data = resData.filter((res) => res?.info?.avgRating >= 4);
+    const data = resData.filter((res) => res?.info?.avgRating >= 4.5);
     setOrignalData(data);
   };
 
