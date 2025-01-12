@@ -11,7 +11,7 @@ function ItemList({ data }) {
 
   return (
     <div className="p-4">
-      {data.categories.map((category) => (
+      {data?.categories?.map((category) => (
         <div key={category.title} className="my-4">
           <h2 className="text-lg font-bold mb-2">{category.title}</h2>
           {category.itemCards.map((itemCard) => (

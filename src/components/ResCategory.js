@@ -10,7 +10,7 @@ function ResCategory({ data, showItem, index, handleShowAccordian }) {
           onClick={() => handleShowAccordian(index)}
         >
           <span className="font-bold">
-            {data.title} ({data.categories.length})
+            {data.title} ({data?.categories?.length})
           </span>
           <span>&#9660;</span>
         </div>

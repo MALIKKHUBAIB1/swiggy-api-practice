@@ -8,12 +8,11 @@ function DetailPage() {
   const [showIndex, setShowIndex] = useState(null);
   const navigate = useNavigate();
   const { id } = useParams();
+  console.log(id);
   const { menuData, error } = useFetchData(id);
   const data = useFetchRecomendedData();
   const categorey = data.filter(
-    (category) =>
-      category.card.card["@type"] ==
-      "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
+    (category) => category?.card?.card?.categories?.length >= 1
   );
   if (!error === "") return <Shimmer />;
   if (menuData.length <= 0) {
@@ -42,18 +41,19 @@ function DetailPage() {
           {menuData[2].card?.card?.info?.costForTwoMessage}
         </p>
 
-        {categorey.map((cat, index) => {
-          return (
-            <ResCategory
-              // key={cat.card?.card?.categories?.itemCards?.card.info.id}
-              key={index}
-              data={cat.card?.card}
-              showItem={index === showIndex ? true : false}
-              index={index}
-              handleShowAccordian={handleShowAccordian}
-            />
-          );
-        })}
+        {categorey &&
+          categorey?.map((cat, index) => {
+            return (
+              <ResCategory
+                // key={cat.card?.card?.categories?.itemCards?.card.info.id}
+                key={index}
+                data={cat.card?.card}
+                showItem={index === showIndex ? true : false}
+                index={index}
+                handleShowAccordian={handleShowAccordian}
+              />
+            );
+          })}
       </div>
     </>
   );
